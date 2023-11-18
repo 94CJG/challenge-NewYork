@@ -1,12 +1,22 @@
 import '../styles/Main.scss';
+import { useApiQuery } from "../services/Api";
 
 function Main() {
+	const { data, error } = useApiQuery();
+
+	if (error) {
+		return <div>error Test</div>
+	}
+
+	if (!data) {
+		return <div>Loading...</div>;
+	}
 
 	return (
 		<div className="main">
 			<div className="main-inner">
 				<ul>
-					<li>Test</li>
+					<li>test1</li>
 					<li>Test2</li>
 					<li>Test3</li>
 				</ul>

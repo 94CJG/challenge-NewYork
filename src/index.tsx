@@ -2,21 +2,22 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import App from './App';
 import { BrowserRouter } from 'react-router-dom';
-import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+import { QueryClient, QueryClientProvider } from 'react-query';
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
-
-const queryClient = new QueryClient();
+//이걸 사용 안하니까 됐어.. 왜?
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
 );
+
+const queryClient = new QueryClient();
+
 root.render(
-  <React.StrictMode>
-    <QueryClientProvider client={queryClient}>
-      <ReactQueryDevtools />
+  <QueryClientProvider client={queryClient}>
+    <React.StrictMode>
       <BrowserRouter>
         <App />
       </BrowserRouter>
-    </QueryClientProvider>
-  </React.StrictMode>
+    </React.StrictMode>
+  </QueryClientProvider>
 );
