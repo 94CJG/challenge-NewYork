@@ -1,8 +1,10 @@
 import '../styles/Main.scss';
 import { useApiQuery } from "../services/Api";
 
+
 function Main() {
 	const { data, error } = useApiQuery();
+	console.log(data, error);
 
 	if (error) {
 		return <div>error Test</div>
@@ -15,10 +17,40 @@ function Main() {
 	return (
 		<div className="main">
 			<div className="main-inner">
-				<ul>
-					<li>test1</li>
-					<li>Test2</li>
-					<li>Test3</li>
+				<ul id="card-box">
+					<div id="card-items">
+
+					</div>
+					{data.response.docs.map((item: any, index: any) => (
+						<div key={index} id="card-items">
+							<li>
+								<div className='item-top'>
+									<div className='hdline'>
+										<p>
+											{item.headline.main}
+										</p>
+									</div>
+									<div className='item-star-img'>
+										<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABEAAAAQCAYAAADwMZRfAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAGJSURBVHgBnZNLcoJAEIaHxz7xBuQEstJyFT1BcgOTraUWN1BPkImvckc8AeUJJDtghScQTxD2vPI3NVgYC0zSVQM93T3fdDcNYzUyGAx0WuyGqLVOVbWyLAug9uri5CrHaDR6AYBJkqQNh8Mu+08mODxJkmQqy7JEOkw2+4tQFljHYj8ej4912ajUOEVRdKR+hxt1WtC1NE2NIgj7GewWwD62gejTATHBer32ZWoeDCYcunBylNFbrVbbArJYLD7wegaIU4y4zMTlVp4Jau6BuIfhNJ/PZ1UpA/Qp1B3Km9KlURTlX01xHCfsdDo7GN/a7XbDdV2b1YgA9Amw2WyCHEKPMqjVakme5zm/BZCc54RzTg2jch6rsoC/idKnZcAFREgTgT6rlgA9vPoNfg6bjiBOCs2FGDIN4NflcmlDP2A93YTgwAPmYS90DtAJYBO2ADb67FeZSIViGMY95uMLakiHMT/v6FNY+JHZBDD6nzSMQ6Psu4DEcdzH4W05oCyI0XBRVwzfWb4BTE/gjBSToccAAAAASUVORK5CYII=" alt="스크랩 별 이미지" />
+									</div>
+								</div>
+								<div className='item-bot'>
+									<div className='item-box'>
+										<div className='item-news'>
+											The New...
+										</div>
+										<div className='item-name'>
+											Jon Gertner,...
+										</div>
+									</div>
+									<p className='item-date'>
+										2023.11.12
+									</p>
+								</div>
+							</li>
+							<br />
+						</div>
+					))}
 				</ul>
 			</div>
 			<div className="main-bottom-btn">
@@ -38,3 +70,11 @@ function Main() {
 }
 
 export default Main;
+
+/**
+ * 1. 예제와 같은 박스 css를 만들어준다.
+ * 2. 1번을 완료 했으면, apid의 정보들을 넣어준다.
+ * 3. map을 사용해서 첫 번째와 같이 넣어준다.
+ * 4. 현재 map( ) 작성한 곳에 css수정한 것들을 넣어줌으로써
+ * 출력되는 모습이 보이기 시작했다!
+ */
