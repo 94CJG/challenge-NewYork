@@ -31,10 +31,11 @@
   display: flex;
   justify-content: space-evenly;
 }
-.main-inner #card-items .item-top .hdline {
+.main-inner #card-items .item-top .item-hdline {
   font-size: 1.125rem;
   font-weight: 600;
   width: 260px;
+  cursor: pointer;
 }
 .main-inner #card-items .item-top .item-star-img {
   cursor: pointer;

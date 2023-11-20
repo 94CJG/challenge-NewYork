@@ -1,4 +1,9 @@
 import '../styles/Main.scss';
+import { changDate,
+	changeSource,
+	changeByline,
+	changeHeadline
+} from "../utils/ChangeInfo";
 import { useApiQuery } from "../services/Api";
 
 
@@ -25,9 +30,10 @@ function Main() {
 						<div key={index} id="card-items">
 							<li>
 								<div className='item-top'>
-									<div className='hdline'>
+									<div className='item-hdline'>
 										<p>
 											{item.headline.main}
+											{/* {changeHeadline(item.headline.main, 10)} */}
 										</p>
 									</div>
 									<div className='item-star-img'>
@@ -36,15 +42,15 @@ function Main() {
 								</div>
 								<div className='item-bot'>
 									<div className='item-box'>
-										<div className='item-news'>
-											The New...
+										<div className='item-source'>
+											{changeSource(item.source, 10)}
 										</div>
-										<div className='item-name'>
-											Jon Gertner,...
+										<div className='item-byline'>
+											{changeByline(item.byline, 7)}
 										</div>
 									</div>
 									<p className='item-date'>
-										2023.11.12
+										{changDate(item.pub_date)}
 									</p>
 								</div>
 							</li>

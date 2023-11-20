@@ -32,10 +32,11 @@
     .item-top {
       display: flex;
       justify-content: space-evenly;
-      .hdline {
+      .item-hdline {
         font-size: 1.125rem;
         font-weight: 600;
         width: 260px;
+        cursor: pointer;
       }
       .item-star-img {
         cursor: pointer;
