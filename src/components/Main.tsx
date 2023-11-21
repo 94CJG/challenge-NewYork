@@ -32,8 +32,7 @@ function Main() {
 								<div className='item-top'>
 									<div className='item-hdline'>
 										<p>
-											{item.headline.main}
-											{/* {changeHeadline(item.headline.main, 10)} */}
+											{changeHeadline(item.headline.main, 20)}
 										</p>
 									</div>
 									<div className='item-star-img'>
@@ -46,7 +45,7 @@ function Main() {
 											{changeSource(item.source, 10)}
 										</div>
 										<div className='item-byline'>
-											{changeByline(item.byline, 7)}
+											{changeByline(item.byline.original, 7)}
 										</div>
 									</div>
 									<p className='item-date'>
