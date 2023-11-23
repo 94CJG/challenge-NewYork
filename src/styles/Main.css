@@ -20,6 +20,9 @@
   border-radius: 0 0 30px 30px;
   overflow: hidden;
 }
+.main-inner #card-box div {
+  width: 100%;
+}
 .main-inner #card-items li {
   width: 100%;
   padding: 1.2rem;
@@ -29,13 +32,17 @@
 }
 .main-inner #card-items .item-top {
   display: flex;
-  justify-content: space-evenly;
 }
 .main-inner #card-items .item-top .item-hdline {
   font-size: 1.125rem;
   font-weight: 600;
   width: 260px;
   cursor: pointer;
+}
+.main-inner #card-items .item-top p {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 .main-inner #card-items .item-top .item-star-img {
   cursor: pointer;
@@ -50,6 +57,17 @@
   justify-content: space-between;
   width: 65%;
   font-size: 0.8rem;
+}
+.main-inner #card-items .item-bot .item-box .item-source {
+  width: 85px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.main-inner #card-items .item-bot .item-box .item-byline {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 .main-inner #card-items .item-bot .item-date {
   font-size: 0.8rem;

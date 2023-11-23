@@ -20,6 +20,10 @@
     padding: 1.125rem;
     border-radius: 0 0 30px 30px;
     overflow: hidden;
+
+    div {
+      width: 100%;
+    }
   }
   #card-items {
     li {
@@ -31,14 +35,19 @@
     }
     .item-top {
       display: flex;
-      justify-content: space-evenly;
       .item-hdline {
         font-size: 1.125rem;
         font-weight: 600;
         width: 260px;
         cursor: pointer;
       }
+        p {
+          overflow: hidden;
+          text-overflow: ellipsis;
+          white-space: nowrap;
+        }
       .item-star-img {
+        text-align: right;
         cursor: pointer;
       }
     }
@@ -51,6 +60,19 @@
         justify-content: space-between;
         width: 65%;
         font-size: 0.8rem;
+
+        .item-source {
+          width: 85px;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          white-space: nowrap;
+        }
+        .item-byline {
+          width: 95px;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          white-space: nowrap;
+        }
       }
       .item-date {
         font-size: 0.8rem;
