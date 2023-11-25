@@ -1,6 +1,7 @@
 import '../styles/Main.scss';
 import { changDate } from "../utils/ChangeInfo";
 import { useApiQuery } from "../services/Api";
+import InfinityScroll from "./InfinityScroll";
 /**
  *질문
  * 콜백함수
@@ -40,6 +41,7 @@ function Main() {
 				<>
 					<div className="main-inner">
 						<ul id="card-box">
+							<InfinityScroll></InfinityScroll>
 							<div>
 								{data.response.docs.map((item: IApi, index: number) => (
 									<div key={index} id="card-items">
