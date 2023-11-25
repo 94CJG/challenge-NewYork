@@ -1,12 +1,6 @@
 import '../styles/Main.scss';
 import { changDate } from "../utils/ChangeInfo";
 import { useApiQuery } from "../services/Api";
-/**
- *질문
- * 콜백함수
- * 클로저?
- * interface를 객체로 만들어서 사용하는가? 
- */
 
 interface IApi {
 	item: string[];
@@ -38,7 +32,7 @@ function Main() {
 				<div>Loading...</div>
 			) : (
 				<>
-					<div className="main-inner">
+							<div id="main-inner">
 						<ul id="card-box">
 							<div>
 								{data.response.docs.map((item: IApi, index: number) => (
