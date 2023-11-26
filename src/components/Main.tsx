@@ -1,6 +1,8 @@
+import { useEffect } from 'react';
 import '../styles/Main.scss';
 import { changDate } from "../utils/ChangeInfo";
-import { useApiQuery } from "../services/Api";
+import { QueryClient } from '@tanstack/react-query';
+// import { useApiQuery } from "../services/Api";
 
 interface IApi {
 	item: string[];
@@ -13,6 +15,7 @@ interface IApi {
 		original: string;
 	}
 	pub_date: string;
+	web_url: string;
 }
 
 
@@ -20,7 +23,7 @@ function Main() {
 	const { data, error } = useApiQuery();
 	console.log(data, error);
 
-	const onClick = (itemUrl: any) => {
+	const onClick = (itemUrl: IApi) => {
 		return window.open(itemUrl.web_url)
 	}
 
