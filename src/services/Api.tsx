@@ -34,8 +34,12 @@ export const useInfinityScrollApiQuery = () => {
 			&sort=newest
 			&api-key=r4UFJLWEvtpcSMTJy0ludn1QqafnSyhL`).then((res)=>res.json());
 		},
-		getNextPageParam: (lastPage) => {
-			return lastPage+=1;
+		getNextPageParam: (lastPage, allPages) => {
+			if(allPages.length <=2){
+				return allPages.length;
+			}
+			console.log(allPages.length);
+			return allPages.length + 1;
 		},
 		initialPageParam: 0,
 	});
