@@ -1,5 +1,4 @@
 import {useInfiniteQuery, useQuery} from "@tanstack/react-query";
-import {IApi} from "../components/Main";
 import {useEffect} from "react";
 
 
