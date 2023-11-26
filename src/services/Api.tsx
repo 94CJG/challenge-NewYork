@@ -1,5 +1,6 @@
 import {useInfiniteQuery, useQuery} from "@tanstack/react-query";
 import {IApi} from "../components/Main";
+import {useEffect} from "react";
 
 
 export const useApiQuery = () => {
@@ -28,7 +29,7 @@ export const useApiQuery = () => {
 export const useInfinityScrollApiQuery = () => {
 	const {data, fetchNextPage} = useInfiniteQuery<any>({
 		queryKey: ["scroll"],
-		queryFn: async({pageParam=1})=>{
+		queryFn: async({pageParam})=>{
 			return await fetch(`https://api.nytimes.com/svc/search/v2/articlesearch.json?
 			q=glocations:(undefined)page=${pageParam}
 			&sort=newest
