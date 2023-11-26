@@ -3,19 +3,6 @@ import {useInfinityScrollApiQuery} from "../services/Api";
 import {useInView} from "react-intersection-observer";
 import {changDate} from "../utils/ChangeInfo";
 
-interface UseInfiniteQueryWithScrollParamsTypes {
-    currentSearchType: any;
-    queryString: any;
-}
-
-interface UseInfiniteQueryWithScrollReturnTypes {
-    data: any;
-    error: any;
-    isFetching: any;
-    ObservationComponent: () => ReactElement;
-}
-
-
 /**
  * 사용 기술
  * Recat query: useInfiniteQuery (https://react-query.tanstack.com/guides/infinite-queries)
@@ -30,7 +17,7 @@ function InfinityScroll() {
     // ref는 target을 지정할 element에 지정한다.
     //inView type은 boolean으로 root(뷰포트)에 target(ref를 지정한 element)이 들어오면 true로 변환됨
     const { ref, inView } = useInView(
-        {threshold: 0.5,});
+        {threshold: 0.3,});
 
     useEffect(() => {
         // hasNextPage 다음 페이지가 있는지 여부, Boolean (getNextPageParam 리턴값에 의해서)
@@ -41,13 +28,13 @@ function InfinityScroll() {
     }, [inView]);
 
     return (
-        <div ref={ref}>
-            <div>
+        <div >
+            <div >
                 {data?.pages?.map((page, i) => (
-                    <div key={i} id="card-items">
+                    <div key={i} id="card-items" >
                         {page.response.docs.map((itme:any) => (
                             <li>
-                                <div className='item-top'>
+                                <div className='item-top' ref={ref}>
                                     <div className='item-hdline'>
                                         {/*<p onClick={() => onClick(item)}>*/}
                                         {itme.headline.main}
