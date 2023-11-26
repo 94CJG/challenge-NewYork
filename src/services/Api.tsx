@@ -27,7 +27,7 @@ export const useApiQuery = () => {
 
 export const useInfinityScrollApiQuery = () => {
 	const {data, fetchNextPage} = useInfiniteQuery<any>({
-		queryKey: ["scroll"],
+		queryKey: ["scrolls"],
 		queryFn: async({pageParam})=>{
 			return await fetch(`https://api.nytimes.com/svc/search/v2/articlesearch.json?
 			q=glocations:(undefined)page=${pageParam}
