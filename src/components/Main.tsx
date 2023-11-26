@@ -9,7 +9,7 @@ import InfinityScroll from "./InfinityScroll";
  * interface를 객체로 만들어서 사용하는가? 
  */
 
-interface IApi {
+export interface IApi {
 	item: string[];
 	headline: {
 		main: string;
@@ -24,8 +24,8 @@ interface IApi {
 
 
 function Main() {
-	const { data, error } = useApiQuery();
-	console.log(data, error);
+	// const { data, error } = useApiQuery();
+	// console.log(data, error);
 
 	const onClick = (itemUrl: any) => {
 		return window.open(itemUrl.web_url)
@@ -33,47 +33,47 @@ function Main() {
 
 	return (
 		<div className="main">
-			{error ? (
-				<div>Error Test</div>
-			) : !data ? (
-				<div>Loading...</div>
-			) : (
+			{/*{error ? (*/}
+			{/*	<div>Error Test</div>*/}
+			{/*) : !data ? (*/}
+			{/*	<div>Loading...</div>*/}
+			{/*) : (*/}
 				<>
 					<div className="main-inner">
 						<ul id="card-box">
 							<InfinityScroll></InfinityScroll>
-							<div>
-								{data.response.docs.map((item: IApi, index: number) => (
-									<div key={index} id="card-items">
-										<li>
-											<div className='item-top'>
-												<div className='item-hdline'>
-													<p onClick={() => onClick(item)}>
-														{item.headline.main}
-													</p>
-												</div>
-												<div className='item-star-img'>
-													<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABEAAAAQCAYAAADwMZRfAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAGJSURBVHgBnZNLcoJAEIaHxz7xBuQEstJyFT1BcgOTraUWN1BPkImvckc8AeUJJDtghScQTxD2vPI3NVgYC0zSVQM93T3fdDcNYzUyGAx0WuyGqLVOVbWyLAug9uri5CrHaDR6AYBJkqQNh8Mu+08mODxJkmQqy7JEOkw2+4tQFljHYj8ej4912ajUOEVRdKR+hxt1WtC1NE2NIgj7GewWwD62gejTATHBer32ZWoeDCYcunBylNFbrVbbArJYLD7wegaIU4y4zMTlVp4Jau6BuIfhNJ/PZ1UpA/Qp1B3Km9KlURTlX01xHCfsdDo7GN/a7XbDdV2b1YgA9Amw2WyCHEKPMqjVakme5zm/BZCc54RzTg2jch6rsoC/idKnZcAFREgTgT6rlgA9vPoNfg6bjiBOCs2FGDIN4NflcmlDP2A93YTgwAPmYS90DtAJYBO2ADb67FeZSIViGMY95uMLakiHMT/v6FNY+JHZBDD6nzSMQ6Psu4DEcdzH4W05oCyI0XBRVwzfWb4BTE/gjBSToccAAAAASUVORK5CYII=" alt="스크랩 별 이미지" />
-												</div>
-											</div>
-											<div className='item-bot'>
-												<div className='item-box'>
-													<div className='item-source'>
-														{item.source}
-													</div>
-													<div className='item-byline'>
-														{item.byline.original}
-													</div>
-												</div>
-												<p className='item-date'>
-													{changDate(item.pub_date)}
-												</p>
-											</div>
-										</li>
-										<br />
-									</div>
-								))}
-							</div>
+							{/*<div>*/}
+							{/*	{data.response.docs.map((item: IApi, index: number) => (*/}
+							{/*		<div key={index} id="card-items">*/}
+							{/*			<li>*/}
+							{/*				<div className='item-top'>*/}
+							{/*					<div className='item-hdline'>*/}
+							{/*						<p onClick={() => onClick(item)}>*/}
+							{/*							{item.headline.main}*/}
+							{/*						</p>*/}
+							{/*					</div>*/}
+							{/*					<div className='item-star-img'>*/}
+							{/*						<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABEAAAAQCAYAAADwMZRfAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAGJSURBVHgBnZNLcoJAEIaHxz7xBuQEstJyFT1BcgOTraUWN1BPkImvckc8AeUJJDtghScQTxD2vPI3NVgYC0zSVQM93T3fdDcNYzUyGAx0WuyGqLVOVbWyLAug9uri5CrHaDR6AYBJkqQNh8Mu+08mODxJkmQqy7JEOkw2+4tQFljHYj8ej4912ajUOEVRdKR+hxt1WtC1NE2NIgj7GewWwD62gejTATHBer32ZWoeDCYcunBylNFbrVbbArJYLD7wegaIU4y4zMTlVp4Jau6BuIfhNJ/PZ1UpA/Qp1B3Km9KlURTlX01xHCfsdDo7GN/a7XbDdV2b1YgA9Amw2WyCHEKPMqjVakme5zm/BZCc54RzTg2jch6rsoC/idKnZcAFREgTgT6rlgA9vPoNfg6bjiBOCs2FGDIN4NflcmlDP2A93YTgwAPmYS90DtAJYBO2ADb67FeZSIViGMY95uMLakiHMT/v6FNY+JHZBDD6nzSMQ6Psu4DEcdzH4W05oCyI0XBRVwzfWb4BTE/gjBSToccAAAAASUVORK5CYII=" alt="스크랩 별 이미지" />*/}
+							{/*					</div>*/}
+							{/*				</div>*/}
+							{/*				<div className='item-bot'>*/}
+							{/*					<div className='item-box'>*/}
+							{/*						<div className='item-source'>*/}
+							{/*							{item.source}*/}
+							{/*						</div>*/}
+							{/*						<div className='item-byline'>*/}
+							{/*							{item.byline.original}*/}
+							{/*						</div>*/}
+							{/*					</div>*/}
+							{/*					<p className='item-date'>*/}
+							{/*						{changDate(item.pub_date)}*/}
+							{/*					</p>*/}
+							{/*				</div>*/}
+							{/*			</li>*/}
+							{/*			<br />*/}
+							{/*		</div>*/}
+							{/*	))}*/}
+							{/*</div>*/}
 						</ul>
 					</div>
 					<div className="main-bottom-btn">
@@ -89,7 +89,7 @@ function Main() {
 						</div>
 					</div>
 				</>
-			)}
+			{/*)}*/}
 		</div>
 	)
 }

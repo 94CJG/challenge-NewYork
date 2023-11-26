@@ -1,4 +1,5 @@
 import {useInfiniteQuery, useQuery} from "@tanstack/react-query";
+import {IApi} from "../components/Main";
 
 export const useApiQuery = () => {
 	const { data, error } = useQuery({
@@ -16,20 +17,22 @@ export const useApiQuery = () => {
 	return { data, error };
 }
 
-export const useInfinityScrollApiQuery = (page:number) => {
-	// const { data, fetchNextPage, hasNextPage } = useInfiniteQuery({
-	// 	queryKey: ["scroll"],
-	// 	queryFn: async ({ pageParam = 0 }) => {},
-	// 	getNextPageParam: (lastPage, pages) => {},
-	// 	initialPageParam:1,
-	// })
+export const useInfinityScrollApiQuery = () => {
+	const {data, fetchNextPage} = useInfiniteQuery<any>({
+		queryKey: ["scroll"],
+		queryFn: async({pageParam=1})=>{
+			return await fetch(`https://api.nytimes.com/svc/search/v2/articlesearch.json?
+			q=glocations:(undefined)page=${pageParam}
+			&sort=newest
+			&api-key=r4UFJLWEvtpcSMTJy0ludn1QqafnSyhL`).then((res)=>res.json());
+		},
+		getNextPageParam: (lastPage) => {
+			return lastPage+=1;
+		},
+		initialPageParam: 0,
+	});
 
-	return null;
+	return {data, fetchNextPage};
 }
-// async(page: number)=>{
-// 	return await fetch(`https://api.nytimes.com/svc/search/v2/articlesearch.json?
-// 			q=glocations:(undefined)page=${page}
-// 			&sort=newest
-// 			&api-key=r4UFJLWEvtpcSMTJy0ludn1QqafnSyhL`)
 
 export default {useApiQuery ,useInfinityScrollApiQuery};
