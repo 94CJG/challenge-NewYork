@@ -1,8 +1,10 @@
 import {useInfiniteQuery, useQuery} from "@tanstack/react-query";
 import {IApi} from "../components/Main";
 
+
 export const useApiQuery = () => {
-	const { data, error } = useQuery({
+	const { data, error, refetch } = useQuery({
+		enabled: false,
 		queryKey: ['repoData'],
 		queryFn: () =>
 			fetch('https://api.nytimes.com/svc/search/v2/articlesearch.json?' +
@@ -11,11 +13,17 @@ export const useApiQuery = () => {
 				'&pub_date' +
 				'&api-key=h6IwBnNIMxY1EfOVVAeeN0XAFFfKSfQM').then(
 				(res) => res.json(),
-				),
-			});
-
+			),
+	});
+	useEffect(() => {
+		const handleActivateQuery = () => {
+			refetch();
+		};
+		handleActivateQuery();
+	}, []);
 	return { data, error };
 }
+
 
 export const useInfinityScrollApiQuery = () => {
 	const {data, fetchNextPage} = useInfiniteQuery<any>({

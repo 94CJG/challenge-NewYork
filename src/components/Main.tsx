@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import '../styles/Main.scss';
 import { changDate } from "../utils/ChangeInfo";
 import { useApiQuery } from "../services/Api";
@@ -8,6 +9,7 @@ import InfinityScroll from "./InfinityScroll";
  * 클로저?
  * interface를 객체로 만들어서 사용하는가? 
  */
+
 
 export interface IApi {
 	item: string[];
@@ -20,6 +22,7 @@ export interface IApi {
 		original: string;
 	}
 	pub_date: string;
+	web_url: string;
 }
 
 
@@ -27,7 +30,7 @@ function Main() {
 	// const { data, error } = useApiQuery();
 	// console.log(data, error);
 
-	const onClick = (itemUrl: any) => {
+	const onClick = (itemUrl: IApi) => {
 		return window.open(itemUrl.web_url)
 	}
 
@@ -39,7 +42,7 @@ function Main() {
 			{/*	<div>Loading...</div>*/}
 			{/*) : (*/}
 				<>
-					<div className="main-inner">
+							<div id="main-inner">
 						<ul id="card-box">
 							<InfinityScroll></InfinityScroll>
 							{/*<div>*/}
