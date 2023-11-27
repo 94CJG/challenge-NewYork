@@ -18,7 +18,7 @@
   background-color: #f0f1f4;
   padding: 1.125rem;
   border-radius: 0 0 30px 30px;
-  overflow: hidden;
+  overflow: scroll;
 }
 .main-inner #card-box div {
   width: 100%;
@@ -45,6 +45,7 @@
   white-space: nowrap;
 }
 .main-inner #card-items .item-top .item-star-img {
+  text-align: right;
   cursor: pointer;
 }
 .main-inner #card-items .item-bot {
@@ -65,6 +66,7 @@
   white-space: nowrap;
 }
 .main-inner #card-items .item-bot .item-box .item-byline {
+  width: 95px;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;

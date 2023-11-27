@@ -1,12 +1,8 @@
+import { useEffect } from 'react';
 import '../styles/Main.scss';
 import { changDate } from "../utils/ChangeInfo";
-import { useApiQuery } from "../services/Api";
-/**
- *질문
- * 콜백함수
- * 클로저?
- * interface를 객체로 만들어서 사용하는가? 
- */
+import { useApiQuery,  useInfinityScrollApiQuery} from "../services/Api";
+import { useInView } from 'react-intersection-observer';
 
 interface IApi {
 	item: string[];
@@ -23,9 +19,22 @@ interface IApi {
 
 
 function Main() {
-	const { data, error } = useApiQuery();
-	console.log(data, error);
+	const { data:apiData, error } = useApiQuery();
+	const { data:infiniteScrollData, fetchNextPage} = useInfinityScrollApiQuery() ;
 
+	const { ref, inView} = useInView( {threshold: 0.4} );
+	//구조 분해를 사용 하여 data의 값들을 각각 변경하여 넣어준다.
+	//inView : boolean 값으로 해당 요소가 보이면 true를 반환하여 ref요소에 전달하고 다음을 보여준다.
+	//threshold는 관찰자의 콜백이 실행되어야 하는 대상의 가시성 백분율을 정희 한 것. 0.4 = 40%가 보이면 inView 값이 true로 설정된다.
+	console.log(apiData, error);
+	console.log(infiniteScrollData);
+
+	useEffect(() => {
+		if(inView) {
+			fetchNextPage();
+		}
+	}, [inView])
+	
 	const onClick = (itemUrl: any) => {
 		return window.open(itemUrl.web_url)
 	}
@@ -34,17 +43,17 @@ function Main() {
 		<div className="main">
 			{error ? (
 				<div>Error Test</div>
-			) : !data ? (
+			) : !apiData ? (
 				<div>Loading...</div>
 			) : (
 				<>
 					<div className="main-inner">
 						<ul id="card-box">
 							<div>
-								{data.response.docs.map((item: IApi, index: number) => (
+								{apiData.response.docs.map((item: IApi, index: number) => (
 									<div key={index} id="card-items">
-										<li>
-											<div className='item-top'>
+										<li ref={ref}>
+											<div className='item-top' >
 												<div className='item-hdline'>
 													<p onClick={() => onClick(item)}>
 														{item.headline.main}
@@ -92,3 +101,10 @@ function Main() {
 	)
 }
 export default Main
+
+/**
+ *질문
+ * 콜백함수
+ * 클로저?
+ * interface를 객체로 만들어서 사용하는가? 
+ */
