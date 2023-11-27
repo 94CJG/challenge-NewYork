@@ -2,7 +2,7 @@
   position: relative;
 }
 
-.main-inner {
+#main-inner {
   display: flex;
   justify-content: center;
   width: 375px;
@@ -12,6 +12,7 @@
 
   #card-box {
     display: flex;
+    overflow: scroll;
     flex-direction: column;
     align-items: center;
     width: 100%;
@@ -19,7 +20,9 @@
     background-color: #f0f1f4;
     padding: 1.125rem;
     border-radius: 0 0 30px 30px;
-    overflow: hidden;
+
+    overflow: scroll;
+
 
     div {
       width: 100%;

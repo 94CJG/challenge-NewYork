@@ -2,15 +2,16 @@
   position: relative;
 }
 
-.main-inner {
+#main-inner {
   display: flex;
   justify-content: center;
   width: 375px;
   height: 668px;
   margin: 0 auto;
 }
-.main-inner #card-box {
+#main-inner #card-box {
   display: flex;
+  overflow: scroll;
   flex-direction: column;
   align-items: center;
   width: 100%;
@@ -18,58 +19,59 @@
   background-color: #f0f1f4;
   padding: 1.125rem;
   border-radius: 0 0 30px 30px;
-  overflow: hidden;
 }
-.main-inner #card-box div {
+#main-inner #card-box div {
   width: 100%;
 }
-.main-inner #card-items li {
+#main-inner #card-items li {
   width: 100%;
   padding: 1.2rem;
   border: 1px solid #fff;
   border-radius: 10px;
   background-color: #fff;
 }
-.main-inner #card-items .item-top {
+#main-inner #card-items .item-top {
   display: flex;
 }
-.main-inner #card-items .item-top .item-hdline {
+#main-inner #card-items .item-top .item-hdline {
   font-size: 1.125rem;
   font-weight: 600;
   width: 260px;
   cursor: pointer;
 }
-.main-inner #card-items .item-top p {
+#main-inner #card-items .item-top p {
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
 }
-.main-inner #card-items .item-top .item-star-img {
+#main-inner #card-items .item-top .item-star-img {
+  text-align: right;
   cursor: pointer;
 }
-.main-inner #card-items .item-bot {
+#main-inner #card-items .item-bot {
   display: flex;
   justify-content: space-between;
   padding-top: 0.8rem;
 }
-.main-inner #card-items .item-bot .item-box {
+#main-inner #card-items .item-bot .item-box {
   display: flex;
   justify-content: space-between;
   width: 65%;
   font-size: 0.8rem;
 }
-.main-inner #card-items .item-bot .item-box .item-source {
+#main-inner #card-items .item-bot .item-box .item-source {
   width: 85px;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
 }
-.main-inner #card-items .item-bot .item-box .item-byline {
+#main-inner #card-items .item-bot .item-box .item-byline {
+  width: 95px;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
 }
-.main-inner #card-items .item-bot .item-date {
+#main-inner #card-items .item-bot .item-date {
   font-size: 0.8rem;
 }
 
