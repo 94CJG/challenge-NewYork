@@ -1,9 +1,33 @@
 .hd {
+  position: relative;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   width: 375px;
+
+  .modal-wrap {
+    display: flex;
+    background-color: rgba(0,0,0,.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    width: 100%;
+    top: 0;
+    height: 812px;
+    z-index: 1;
+    pointer-events: none;
+    color: red;
+
+    .modal-container {
+      text-align: center;
+    }
+  }
+  .apply-btn {
+    cursor: pointer;
+    pointer-events: auto;
+  }
 
   .smt-bar {
     width: 100%;
