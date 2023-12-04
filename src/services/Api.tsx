@@ -1,4 +1,5 @@
 import { useInfiniteQuery } from "@tanstack/react-query";
+import { useEffect } from "react";
 
 // export const useApiQuery = () => {
 // 	const { data: apiData, error, refetch } = useQuery({
@@ -39,19 +40,36 @@ const fetchData = async (page:number) => {
 }
 
 export const useInfinityScrollApiQuery = () => {
-	return useInfiniteQuery({
-		queryKey: ["scrolls"],
-		queryFn: ({ pageParam = 1 }) => fetchData(pageParam),
-		initialPageParam: 1,
-		getNextPageParam: (lastPage, allPages) => {
-			const limit = 10;
+  const {
+    data: infiniteScrollData,
+    fetchNextPage,
+    error,
+  } = useInfiniteQuery({
+    queryKey: ["scrolls"],
+    queryFn: ({ pageParam = 1 }) => fetchData(pageParam),
+    initialPageParam: 1,
+    getNextPageParam: (lastPage, allPages) => {
+      const limit = 10;
 
-			if(lastPage?.length === limit) {
-				return allPages.length + 1;
-			}
-			return undefined;
-		},
-	})
+      if (lastPage?.length === limit) {
+        return allPages.length + 1;
+      }
+      return undefined;
+    },
+  });
+
+  // 에러 처리
+  useEffect(() => {
+    if (error) {
+      // 에러가 발생하면 콘솔에 에러 로그 출력
+      console.error("Error in useInfinityScrollApiQuery:", error);
+    }
+  }, [error]);
+
+  return { data: infiniteScrollData, fetchNextPage, error };
+};
+
+
 		//useQuery와 사용법은 같은데, useApiQuery()에서 값을 사용 할 수는 없을까..? -> 구조분해 할당으로 변수명을 다르게 함.
 		//getNextPageParam()
 		//ㄴ 이 함수는 이전 페이지에서 다음 페이지로 이동하기 위한 매개변수를 반환하는 역할을 한다.
@@ -60,4 +78,3 @@ export const useInfinityScrollApiQuery = () => {
 		//initialPageParam 사용할 페이지 번호를 설정하는 데 사용되는 프로퍼티.
 		//initialPageParam 초기 페이지를 설정해주고, 값을 설정을 해주지 않으면 undefined가 사용되어
 		//initialPageParam 첫 번째 호출 시에 pageParam이 undefined로 전달된다.
-};

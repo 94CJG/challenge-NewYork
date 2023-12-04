@@ -16,11 +16,14 @@
   width: 100%;
   top: 0;
   height: 812px;
-  z-index: 99;
+  z-index: 1;
   pointer-events: none;
   color: red;
 }
 .hd .modal-wrap .modal-container {
+  width: 100%;
+  background: #fff;
+  height: 60%;
   text-align: center;
 }
 .hd .apply-btn {
